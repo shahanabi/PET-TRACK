@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block title %}Cat Food Routine view{% endblock %}
+
+{% block content %}
+<style>
+    section {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+        padding: 60px 20px;
+        color: #333;
+        min-height: 100vh;
+    }
+    
+    h2 {
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    
+    table.routine-table {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto 40px auto;
+        border-collapse: separate;
+        border-spacing: 0;
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+    
+    table.routine-table th, table.routine-table td {
+        padding: 16px 20px;
+        text-align: center;
+        font-size: 1rem;
+    }
+    
+    table.routine-table th {
+        background-color: #2980b9;
+        color: white;
+        font-weight: 600;
+    }
+    
+    table.routine-table td {
+        background-color: #fdfdfd;
+        color: #333;
+    }
+    
+    table.routine-table tr:nth-child(even) td {
+        background-color: #f2f8fc;
+    }
+    
+    table.routine-table tr:hover td {
+        background-color: #e3f2fd;
+        transition: background-color 0.3s ease;
+    }
+    
+    .btn-actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+    
+    .edit-button {
+        padding: 12px 28px;
+        background-color: #2980b9;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .edit-button:hover {
+        background-color: #1f6693;
+        transform: scale(1.05);
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 1.8rem;
+        }
+    
+        table.routine-table th, table.routine-table td {
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+    
+        .edit-button {
+            width: 100%;
+            padding: 14px;
+        }
+    
+        .btn-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    </style>
+    
+    
+
+<section>
+    <div class="container">
+        <h2>Food Routine for {{ routine.cat_name }}</h2>
+
+        <div>
+            <table class="routine-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Morning Meal</th>
+                        <th>Evening Meal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>{{ routine.sunday_morning1|default:"Not set" }}</td>
+                        <td>{{ routine.sunday_evening1|default:"Not set" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td>{{ routine.monday_morning1|default:"Not set" }}</td>
+                        <td>{{ routine.monday_evening1|default:"Not set" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td>{{ routine.tuesday_morning1|default:"Not set" }}</td>
+                        <td>{{ routine.tuesday_evening1|default:"Not set" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>{{ routine.wednesday_morning1|default:"Not set" }}</td>
+                        <td>{{ routine.wednesday_evening1|default:"Not set" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td>{{ routine.thursday_morning1|default:"Not set" }}</td>
+                        <td>{{ routine.thursday_evening1|default:"Not set" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td>{{ routine.friday_morning1|default:"Not set" }}</td>
+                        <td>{{ routine.friday_evening1|default:"Not set" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>{{ routine.saturday_morning1|default:"Not set" }}</td>
+                        <td>{{ routine.saturday_evening1|default:"Not set" }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="btn-actions">
+            <a href="{% url 'cat_food_edit' id=routine.id %}" class="edit-button">Edit Routine</a>
+        </div>
+        
+    </div>
+</section>
+{% endblock %}

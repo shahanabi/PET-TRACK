@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Dog Food Routine{% endblock %}
+
+{% block content %}
+<style>
+section {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    margin: 0;
+    padding: 50px 0;
+    min-height: 100vh;
+}
+
+.edit-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: #2b4f73;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 16px;
+    text-align: center;
+}
+
+th {
+    background: #4a90e2;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    background: #f4faff;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 12px;
+    border: 1px solid #ccddee;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.save-btn, .cancel-btn {
+    padding: 14px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #4a90e2, #6fb1fc);
+    color: white;
+    box-shadow: 0px 5px 15px rgba(79, 140, 210, 0.4);
+}
+
+.cancel-btn {
+    background: #e4f1fb;
+    color: #2b4f73;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+}
+
+.save-btn:hover {
+    background: linear-gradient(135deg, #3b7cc4, #5fa3e0);
+    transform: scale(1.05);
+}
+
+.cancel-btn:hover {
+    background: #d4e8f7;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .edit-container {
+        padding: 25px;
+        width: 95%;
+    }
+
+    th, td {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .save-btn, .cancel-btn {
+        width: 100%;
+    }
+}
+</style>
+
+<section>
+    <div class="edit-container">
+        <h2>Edit Food Routine for {{ routine.dog_name }}</h2>
+        
+        <form method="post" action="{% url 'dog_food_routine' id=dog_id %}">
+            {% csrf_token %}
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Morning Meal</th>
+                        <th>Evening Meal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sunday</td>
+                        <td><input type="text" name="sunday_morning" value="{{ routine.sunday_morning }}"></td>
+                        <td><input type="text" name="sunday_evening" value="{{ routine.sunday_evening }}"></td>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td><input type="text" name="monday_morning" value="{{ routine.monday_morning }}"></td>
+                        <td><input type="text" name="monday_evening" value="{{ routine.monday_evening }}"></td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td><input type="text" name="tuesday_morning" value="{{ routine.tuesday_morning }}"></td>
+                        <td><input type="text" name="tuesday_evening" value="{{ routine.tuesday_evening }}"></td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td><input type="text" name="wednesday_morning" value="{{ routine.wednesday_morning }}"></td>
+                        <td><input type="text" name="wednesday_evening" value="{{ routine.wednesday_evening }}"></td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td><input type="text" name="thursday_morning" value="{{ routine.thursday_morning }}"></td>
+                        <td><input type="text" name="thursday_evening" value="{{ routine.thursday_evening }}"></td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td><input type="text" name="friday_morning" value="{{ routine.friday_morning }}"></td>
+                        <td><input type="text" name="friday_evening" value="{{ routine.friday_evening }}"></td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td><input type="text" name="saturday_morning" value="{{ routine.saturday_morning }}"></td>
+                        <td><input type="text" name="saturday_evening" value="{{ routine.saturday_evening }}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="button-group">
+                <button type="submit" class="save-btn">Save Changes</button>
+                <a href="{% url 'dog_food_view' id=routine.id %}" class="cancel-btn">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

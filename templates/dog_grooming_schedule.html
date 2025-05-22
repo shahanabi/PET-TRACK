@@ -1,0 +1,294 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Dog Grooming{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    /* Import Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    
+    /* General Styling */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Main Section */
+    section {
+        padding: 80px 0;
+    }
+    
+    /* Container */
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        background: white;
+        padding: 50px;
+        border-radius: 15px;
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    /* Fade In Animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Headings */
+    h2 {
+        text-align: center;
+        font-size: 36px;
+        color: #2c3e50;
+        font-weight: 600;
+        margin-bottom: 35px;
+    }
+    
+    h3 {
+        color: #34495e;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    
+    /* Layout */
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px;
+        margin-bottom: 50px;
+    }
+    
+    .reverse {
+        flex-direction: row-reverse;
+    }
+    
+    /* Content Boxes */
+    .box {
+        flex: 1;
+        padding: 30px;
+        border-radius: 12px;
+        background: white;
+        text-align: center;
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+        transition: 0.3s ease-in-out;
+    }
+    
+    .box:hover {
+        transform: translateY(-5px);
+        box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Image Styling */
+    .image-box {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .image-box img {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+        transition: transform 0.4s ease-in-out;
+    }
+    
+    .image-box img:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Button Styling */
+    .create-schedule-btn {
+        display: block;
+        width: 240px;
+        margin: 50px auto 0;
+        padding: 16px 28px;
+        background-color: #2980b9;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 12px;
+        box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .create-schedule-btn:hover {
+        background-color: #1f6690;
+        transform: scale(1.07);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+            text-align: center;
+        }
+        .reverse {
+            flex-direction: column;
+        }
+        .image-box img {
+            max-width: 95%;
+        }
+    }
+    /* Fixed Buttons */
+.fixed-buttons {
+    position: fixed;
+    right: 20px; /* Distance from the right */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between buttons */
+}
+
+/* Fixed Buttons Styling */
+.fixed-buttons a {
+    display: block;
+    width: 200px;
+    padding: 14px 24px;
+    background-color: #2980b9;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.fixed-buttons a:hover {
+    background-color: #1f6690;
+    transform: scale(1.07);
+}
+
+/* Responsive Fix - Move buttons to bottom for mobile */
+@media (max-width: 768px) {
+    .fixed-buttons {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    
+    .fixed-buttons a {
+        width: 180px;
+        padding: 12px 18px;
+        font-size: 16px;
+    }
+}
+
+    
+    </style>
+    
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+<section>
+    <div class="container">
+        <h2>Dog Grooming Schedule</h2>
+
+        <!-- First Section - Image on Right -->
+        <div class="row">
+            <div class="box">
+                <h3>Tips for At-Home Grooming:</h3>
+                <p><strong>Brush your dog before bathing:</strong> This helps to remove loose hair and prevent mats. </p>
+                <p><strong>Use dog-specific shampoo: </strong> using human shampoo, as it can be harsh on your dog's skin.  </p>
+                <p><strong>Dry your dog thoroughly:</strong> Use a towel and a low-heat hair dryer to prevent skin irritation. </p>
+                <p><strong>Introduce grooming early: </strong>Start grooming your puppy early to help them become comfortable with the process. </p>
+                <p><strong>Be patient and gentle:</strong> Grooming can be a stressful experience for some dogs, so be patient and gentle. </p>
+                <p><strong>Consider professional grooming:</strong> If you're not comfortable grooming your dog at home, consider taking them to a professional groomer.  </p>
+            </div>
+            <div class="image-box">
+                <img src="{% static 'images/dog9.jpeg' %}" alt="Kittens Eating">
+            </div>
+        </div>
+
+        <!-- Second Section - Image on Left -->
+        <div class="row reverse">
+            <div class="image-box">
+                <img src="{% static 'images/dog10.jpeg' %}" alt="Factors to Consider">
+            </div>
+            <div class="box">
+                <h3>General Recommendations:</h3>
+                <p><strong>Bathing:</strong>Most dogs can be bathed every 4-6 weeks, but some breeds with thick undercoats or long hair may need more frequent baths.  </p>
+                <p><strong>Brushing:
+                    </strong> dogs should be brushed at least weekly, while medium and long-haired dogs may require daily brushing to prevent matting. </p>
+                <p><strong>Nail Trims:
+                    </strong>Dogs' nails should be trimmed every 4-6 weeks to prevent overgrowth and discomfort. </p>
+                <p><strong>Haircuts:
+                    Some breeds require regular haircuts to maintain their coat's health and appearance, typically every 4-8 weeks.  </p>
+                <p><strong>Ear Cleaning:
+                    Regularly check and clean your dog's ears to prevent infections, especially if they have floppy ears. </p>
+                <p><strong>Teeth Cleaning:
+                    Brush your dog's teeth regularly to prevent dental problems. </p>
+            </div>
+        </div>
+
+        <!-- Full-Width Image -->
+        <!-- <div class="row center">
+            <div class="image-box">
+                <img src="{% static 'images/cat5.jpg' %}" alt="Cat Food Schedule">
+            </div>
+        </div> -->
+
+        <!-- Third Section - Image on Right -->
+        <div class="row">
+            <div class="box">
+                <h3>Specific Considerations:</h3>
+                <p><strong>Breed:</strong></p>
+                    <ul>
+                        <li><strong>Long-haired breeds:</strong> Require more frequent grooming, including daily brushing, to prevent matting.</li>
+                        <li><strong>Short-haired breeds:</strong> Need less frequent grooming, but regular brushing is still important.</li>
+                        <li><strong>Double-coated breeds:</strong> Shed seasonally and require more attention during shedding periods.</li>
+                    </ul>
+                <p><strong>Coat Type:</strong></p>
+                    <ul>
+                        <li><strong>Silky coats:</strong> Need frequent hair trims to maintain their coat's health and prevent matting. </li>
+                        <li><strong>Curly or wavy coats:</strong> Should be professionally groomed every 4-6 weeks and brushed at least twice a week. </li>
+                    </ul>
+                <p><strong>Activity Level:</strong> Dogs who spend a lot of time outdoors may need more frequent baths and grooming.   </p>
+                <p><strong>Health:</strong> If your dog has any skin conditions or allergies, consult with your veterinarian before bathing or grooming them. </p>
+            </div>
+            <div class="image-box">
+                <img src="{% static 'images/dog11.jpeg' %}" alt="Cat Eating">
+            </div>
+        </div>
+
+        <!-- Fourth Section - Image on Left -->
+        <div class="row reverse">
+            <div class="image-box">
+                <img src="{% static 'images/cat12.jpeg' %}" alt="Healthy Cat">
+            </div>
+            <div class="box">
+                <h3>Grooming:</h3>
+                <p>For a healthy dog, a monthly grooming routine including bathing, brushing, nail trims, and potentially a haircut, is generally recommended, with the frequency depending on the dog's breed and coat type. </p>
+            </div>
+           
+        </div>
+    </div>
+      <!-- Fixed Button Container -->
+<div class="fixed-buttons">
+    <a href="{% url 'dog_grooming_routine' id=request.session.did %}" class="create-schedule-btn">
+        Create Schedule
+    </a>
+    {% if routine %}
+    <a href="{% url 'dog_grooming_view' id=routine.id %}" class="view-schedule-btn">View Routine</a>
+{% endif %}
+</div>
+    
+</section>
+
+{% endblock %}
+

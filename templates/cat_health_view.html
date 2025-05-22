@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title %}Cat Food Routine view{% endblock %}
+
+{% block content %}
+<style>
+section {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+    color: #333;
+    margin: 0;
+    padding: 50px 0;
+}
+
+h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 28px;
+    color: #2980b9;
+    margin-bottom: 20px;
+}
+
+table.routine-table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table.routine-table th, table.routine-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+table.routine-table th {
+    background-color: #2980b9;
+    color: white;
+    font-size: 18px;
+}
+
+table.routine-table td {
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+}
+
+table.routine-table tr:nth-child(even) td {
+    background-color: #f1f1f1;
+}
+
+table.routine-table tr:hover td {
+    background-color: #e1f5fe;
+}
+
+.edit-button {
+    display: block;
+    margin: 25px auto 0;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 6px 14px; /* reduced padding */
+    font-size: 20px; /* smaller font */
+    font-weight: 650;
+    border-radius: 4px; /* slightly smaller radius */
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(41, 128, 185, 0.2);
+    width: 200px;
+    height: 50px;
+}
+
+
+.edit-button:hover {
+    background-color: #1d6fa5;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    table.routine-table {
+        width: 100%;
+    }
+    table.routine-table th, table.routine-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+</style>
+
+<section>
+    <div class="container">
+        <h2>Health Routine for {{ routine.cat_name }}</h2>
+
+        <div>
+            <table class="routine-table">
+                <thead>
+                    <tr>
+                        <th>Date (6 Months)</th>
+                        <th>Health Check</th>
+                        <th>Vaccination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ routine.date11 }}</td>
+                        <td>{{ routine.health_check11 }}</td>
+                        <td>{{ routine.vaccination11 }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ routine.date22 }}</td>
+                        <td>{{ routine.health_check22 }}</td>
+                        <td>{{ routine.vaccination22 }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ routine.date33 }}</td>
+                        <td>{{ routine.health_check33 }}</td>
+                        <td>{{ routine.vaccination33 }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ routine.date44 }}</td>
+                        <td>{{ routine.health_check44 }}</td>
+                        <td>{{ routine.vaccination44 }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ routine.date55 }}</td>
+                        <td>{{ routine.health_check55 }}</td>
+                        <td>{{ routine.vaccination55 }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ routine.date66 }}</td>
+                        <td>{{ routine.health_check66 }}</td>
+                        <td>{{ routine.vaccination66 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+         
+        </div>
+
+        <a href="{% url 'cat_health_edit' id=routine.id %}" class="edit-button">Edit Routine</a>
+    </div>
+</section>
+{% endblock %}

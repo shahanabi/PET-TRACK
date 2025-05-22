@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Cat Daily Routiney{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    padding: 20px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+}
+
+/* Button container now in a vertical column */
+.btn-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between buttons */
+    width: 100%;
+}
+
+/* Button styles */
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 575px;
+    height: 175px;
+    padding: 15px;
+    background: white;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 2px 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+.btn img {
+    width: 550px;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 3px;
+}
+
+.btn span {
+    font-size: 13px;
+    color: #000000;
+    font-weight: bold;
+}
+
+/* Hover Effect */
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 123, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .btn {
+        width: 240px;
+        height: 300px;
+    }
+    .btn img {
+        width: 200px;
+        height: 240px;
+    }
+}
+
+
+</style>
+
+<section>
+    <div>
+        <h1>Cat Daily Routiney</h1>
+        <div class="btn-container">
+            <a href="{% url 'cat_food_schedule' %}" class="btn">
+                <img src="{% static 'images/catfood.jpg' %}" alt="Food">
+                <span>Food</span>
+            </a>
+            <a href="{% url 'cat_health_schedule' %}" class="btn">
+                <img src="{% static 'images/cathealth.jpg' %}" alt="Health Check">
+                <span>Health</span>
+            </a>
+            <a href="{% url 'cat_grooming_schedule' %}" class="btn">
+                <img src="{% static 'images/catgrooming.jpg' %}" alt="Grooming">
+                <span>Grooming</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

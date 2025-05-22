@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<style>
+    section {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+    }
+    .container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+    }
+    .content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1200px;
+        width: 100%;
+    }
+    .image-section {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+    .image-section img {
+        max-height: 80vh;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    .text-section {
+        flex: 1;
+        text-align: center;
+        padding: 20px;
+    }
+    .text-section h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    .text-section p {
+        font-size: 1.25rem;
+        color: #555;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+    .btn {
+        display: inline-block;
+        font-size: 1.25rem;
+        color: white;
+        background-color: black;
+        padding: 15px 40px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+        background-color: #444;
+    }
+    @media (max-width: 1024px) {
+        .content-wrapper {
+            flex-direction: column;
+            text-align: center;
+        }
+        .image-section {
+            margin-bottom: 30px;
+        }
+        .image-section img {
+            max-width: 90%;
+            height: auto;
+        }
+    }
+</style>
+<section>
+<div class="container">
+    <div class="content-wrapper">
+            <img src="{% static 'images/image.png' %}" alt="Happy Pet">
+        <div class="text-section">
+            <h1>Give Your Pet the Love They Deserve!</h1>
+            <p>
+                Welcome to PET TRACK! We’re here to help you give your pets the best care, 
+                with expert advice, quality products, and tips tailored to their needs. 
+                Join our pet-loving community and ensure your furry friends live happy, healthy lives!
+            </p>
+        {% if request.session.did %}
+            <a href="{% url 'dog_routine' %}" class="btn">Start</a>
+        {% elif request.session.cid %}
+            <a href="{% url 'cat_routine' %}" class="btn">Start</a>
+        {% endif %} 
+        </div>
+    </div>
+</div>
+</section>
+
+{% endblock %}

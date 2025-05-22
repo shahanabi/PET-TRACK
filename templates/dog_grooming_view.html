@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}Dog Grooming Routine View{% endblock %}
+
+{% block content %}
+<style>
+section {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    padding: 60px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+}
+
+th, td {
+    padding: 16px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #eee;
+}
+
+th {
+    background-color: #2980b9;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #fdfdfd;
+}
+
+tr:nth-child(even) td {
+    background-color: #f4f9fd;
+}
+
+tr:hover td {
+    background-color: #eaf6ff;
+}
+
+.edit-button {
+    display: block;
+    margin: 35px auto 0;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+    box-shadow: 0 5px 12px rgba(41, 128, 185, 0.3);
+    width: 200px;
+}
+
+.edit-button:hover {
+    background-color: #1d6fa5;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .edit-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+</style>
+
+<section>
+    <div class="container">
+        <h2>Grooming Routine</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date / Week</th>
+                    <th>Grooming</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ routine.date01 }}</td>
+                    <td>{{ routine.grooming01 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ routine.date02 }}</td>
+                    <td>{{ routine.grooming02 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ routine.date03 }}</td>
+                    <td>{{ routine.grooming03 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ routine.date04 }}</td>
+                    <td>{{ routine.grooming04 }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{% url 'dog_grooming_edit' id=routine.id %}" class="edit-button">Edit Routine</a>
+    </div>
+</section>
+{% endblock %}

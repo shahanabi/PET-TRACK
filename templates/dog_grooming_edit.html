@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Dog Health Routine{% endblock %}
+
+{% block content %}
+<style>
+section {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    margin: 0;
+    padding: 50px 0;
+    min-height: 100vh;
+}
+
+.edit-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: #222e50;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 16px;
+    text-align: center;
+}
+
+th {
+    background: #4a90e2;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+td {
+    background: #f4faff;
+}
+
+input[type="text"], input[type="date"] {
+    width: 90%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+input[type="text"]:focus, input[type="date"]:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.save-btn, .cancel-btn {
+    padding: 14px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #4a90e2, #6fb1fc);
+    color: white;
+    box-shadow: 0px 5px 15px rgba(74, 144, 226, 0.4);
+}
+
+.cancel-btn {
+    background: #f1f1f1;
+    color: #666;
+}
+
+.save-btn:hover {
+    background: linear-gradient(135deg, #3a7edc, #5ea8fa);
+    transform: scale(1.05);
+}
+
+.cancel-btn:hover {
+    background: #e1e1e1;
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+    .edit-container {
+        padding: 25px;
+        width: 95%;
+    }
+
+    th, td {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .save-btn, .cancel-btn {
+        width: 100%;
+    }
+}
+</style>
+
+<section>
+    <div class="edit-container">
+        <h2>Edit Grooming Routine</h2>
+        
+        <form method="post" action="{% url 'dog_grooming_routine' id=dog_id %}">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th>Date/Week</th>
+                    <th>Grooming</th>
+                </tr>
+                <tr>
+                    <td><input type="date" name="date01" value="{{ routine.date01 }}"></td>
+                    <td><input type="text" name="grooming01" value="{{ routine.grooming01 }}" placeholder="Enter grooming details"></td>
+                </tr>
+                <tr>
+                    <td><input type="date" name="date02" value="{{ routine.date02 }}"></td>
+                    <td><input type="text" name="grooming02" value="{{ routine.grooming02 }}" placeholder="Enter grooming details"></td>
+                </tr>
+                <tr>
+                    <td><input type="date" name="date03" value="{{ routine.date03 }}"></td>
+                    <td><input type="text" name="grooming03" value="{{ routine.grooming03 }}" placeholder="Enter grooming details"></td>
+                </tr>
+                <tr>
+                    <td><input type="date" name="date04" value="{{ routine.date04 }}"></td>
+                    <td><input type="text" name="grooming04" value="{{ routine.grooming04 }}" placeholder="Enter grooming details"></td>
+                </tr>
+            </table>
+            
+            <div class="button-group">
+                <button type="submit" class="save-btn">Save Changes</button>
+                <a href="{% url 'dog_grooming_view' id=routine.id %}" class="cancel-btn">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

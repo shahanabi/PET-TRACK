@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block title %}Cat Health Routine{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<style>
+/* General Styles */
+section {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+form {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+    margin: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    border: 1px solid #dce3f0;
+    padding: 16px;
+    text-align: center;
+    font-size: 16px;
+}
+
+th {
+    background: #48a3df;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+td {
+    background: #f4f9fd;
+}
+
+td input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #b0c9e7;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+td input:focus {
+    border-color: #2980b9;
+    outline: none;
+    box-shadow: 0 0 8px rgba(41, 128, 185, 0.4);
+}
+
+button, .button {
+    display: inline-block;
+    margin-top: 25px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 15px rgba(41, 128, 185, 0.2);
+    text-decoration: none;
+}
+
+button:hover, .button:hover {
+    background-color: #1d6fa5;
+    transform: scale(1.05);
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+    form {
+        width: 95%;
+        padding: 25px;
+    }
+
+    table, th, td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button, .button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+</style>
+
+<section>
+    <form action="{% url 'cat_health_routine' id=cid %}" method="post">
+        {% csrf_token %}
+        
+        <h2>Health Routine</h2>
+        
+        <table>
+            <tr>
+                <th>Date (6 Months)</th>
+                <th>Health Check</th>
+                <th>Vaccination</th>
+            </tr>
+            <tr>
+                <td><input type="date" name="date11" value="{{ routine.date11 }}"></td>
+                <td><input type="text" name="health_check11" value="{{ routine.health_check11 }}" placeholder="Enter details"></td>
+                <td><input type="text" name="vaccination11" value="{{ routine.vaccination11 }}" placeholder="Enter details"></td>
+            </tr>
+            <tr>
+                <td><input type="date" name="date22" value="{{ routine.date22 }}"></td>
+                <td><input type="text" name="health_check22" value="{{ routine.health_check22 }}" placeholder="Enter details"></td>
+                <td><input type="text" name="vaccination22" value="{{ routine.vaccination22 }}" placeholder="Enter details"></td>
+            </tr>
+            <tr>
+                <td><input type="date" name="date33" value="{{ routine.date33 }}"></td>
+                <td><input type="text" name="health_check33" value="{{ routine.health_check33 }}" placeholder="Enter details"></td>
+                <td><input type="text" name="vaccination33" value="{{ routine.vaccination33 }}" placeholder="Enter details"></td>
+            </tr>
+            <tr>
+                <td><input type="date" name="date44" value="{{ routine.date44 }}"></td>
+                <td><input type="text" name="health_check44" value="{{ routine.health_check44 }}" placeholder="Enter details"></td>
+                <td><input type="text" name="vaccination44" value="{{ routine.vaccination44 }}" placeholder="Enter details"></td>
+            </tr>
+            <tr>
+                <td><input type="date" name="date55" value="{{ routine.date55 }}"></td>
+                <td><input type="text" name="health_check55" value="{{ routine.health_check55 }}" placeholder="Enter details"></td>
+                <td><input type="text" name="vaccination55" value="{{ routine.vaccination55 }}" placeholder="Enter details"></td>
+            </tr>
+            <tr>
+                <td><input type="date" name="date66" value="{{ routine.date66 }}"></td>
+                <td><input type="text" name="health_check66" value="{{ routine.health_check66 }}" placeholder="Enter details"></td>
+                <td><input type="text" name="vaccination66" value="{{ routine.vaccination66 }}" placeholder="Enter details"></td>
+            </tr>
+        </table>
+        <div class="button-row">
+            <button type="submit">Save Routine</button>
+            {% if routine.id %}
+                <a href="{% url 'cat_health_view' id=routine.id %}" class="button">View Routine</a>
+            {% endif %}
+        </div>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,242 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Dog Health{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    /* Import Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Main Container */
+    .container {
+        max-width: 1100px;
+        margin: 40px auto;
+        background: white;
+        padding: 50px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 20px rgba(0, 176, 255, 0.2); /* soft blue shadow */
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    /* Headings */
+    h2 {
+        text-align: center;
+        font-size: 42px;
+        color: #0099cc; /* Sky blue shade */
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+    
+    h3 {
+        color: #00a8e8;
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    
+    /* Layout */
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px;
+        margin-bottom: 50px;
+    }
+    
+    .reverse {
+        flex-direction: row-reverse;
+    }
+    
+    .center {
+        justify-content: center;
+    }
+    
+    /* Box Styling */
+    .box {
+        flex: 1;
+        padding: 30px;
+        border-radius: 12px;
+        background: #f6fcff;
+        border: 2px solid #b3e5fc;
+        box-shadow: 2px 2px 12px rgba(0, 176, 255, 0.1);
+        text-align: left;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .box:hover {
+        transform: translateY(-5px);
+        box-shadow: 6px 6px 20px rgba(0, 176, 255, 0.2);
+    }
+    
+    /* Image Styling */
+    .image-box {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .image-box img {
+        width: 100%;
+        max-width: 360px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 4px 4px 15px rgba(0, 176, 255, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .image-box img:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Full-Width Image */
+    .row.center .image-box img {
+        width: 100%;
+        max-width: 850px;
+    }
+    
+    /* Buttons */
+    .create-schedule-btn,
+    .view-schedule-btn {
+        display: inline-block;
+        width: 220px;
+        padding: 16px 24px;
+        background: #00aaff;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 12px;
+        box-shadow: 3px 3px 12px rgba(0, 176, 255, 0.3);
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .create-schedule-btn:hover,
+    .view-schedule-btn:hover {
+        background-color: #008ecc;
+        transform: scale(1.05);
+    }
+    
+    /* Fixed Button Container */
+    .fixed-buttons {
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+            text-align: center;
+        }
+    
+        .reverse {
+            flex-direction: column;
+        }
+    
+        .image-box img {
+            max-width: 90%;
+        }
+    
+        .box {
+            text-align: center;
+        }
+    }
+    </style>
+    
+
+
+</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+<section>
+    <div class="container">
+        <h2>Dog Health Schedule</h2>
+
+        <!-- First Section - Image on Right -->
+        <div class="row">
+            <div class="box">
+                <h3>Health:</h3>
+                <p><strong>Observation:</strong>For a dog health check in one month, you should focus on routine at-home checks and consider scheduling a veterinary check-up if you notice any concerning signs or if your dog is a puppy or senior.</p>
+            </div>
+            <div class="image-box">
+                <img src="{% static 'images/dog5.jpeg' %}" alt="Kittens Eating">
+            </div>
+        </div>
+
+        <!-- Second Section - Image on Left -->
+        <div class="row reverse">
+            <div class="image-box">
+                <img src="{% static 'images/dog6.jpeg' %}" alt="Factors to Consider">
+            </div>
+            <div class="box">
+                <h3>At-Home Checks:</h3>
+                <p><strong>Eyes:</strong> Look for discharge, cloudiness, or redness. </p>
+                <p><strong>Ears:</strong>  Ensure they are clean and free of odor, and check for signs of infection or irritation.</p>
+                <p><strong>Teeth:</strong> Check for tartar buildup, gum inflammation, or missing teeth. </p>
+                <p><strong>Skin/Body:</strong> Examine for any lumps, bumps, rashes, or signs of parasites. </p>
+                <p><strong>Feet/Paws: </strong> Check for cuts, cracks, or ingrown nails. </p>
+                <p><strong>Movement:</strong> Observe their gait and look for any signs of stiffness or pain.</p>
+                <p><strong>Poop/Digestion:</strong> Note the consistency and color of their stool, and look for any signs of diarrhea or vomiting.</p>
+                <p><strong>Water Consumption: </strong>Mtheir water intake and ensure they are staying hydrated.</p>
+                <p><strong>Weight: </strong> weigh your dog to ensure they are maintaining a healthy weight.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <h3>Veterinary Check-Up (Monthly or as needed):</h3>
+                <p><strong>General Examination:</strong> A vet will assess your dog's overall health.</p>
+                <p><strong>Vaccinations:</strong> Ensure your dog is up to date on vaccinations. </p>
+                <p><strong>Deworming:</strong> Discuss deworming needs with your vet. </p>
+                <p><strong>Diet Changes:</strong> Discuss any dietary concerns or changes with your vet.  </p>
+                <p><strong>Grooming:</strong> Get advice on proper grooming practices.  </p>
+                <p><strong>Health Problems:</strong> Address any specific health concerns or symptoms you've noticed.  </p>
+            </div>
+            <div class="image-box">
+                <img src="{% static 'images/dog7.jpeg' %}" alt="Cat Eating">
+            </div>
+        </div>
+
+        <!-- Fourth Section - Image on Left -->
+        <div class="row reverse">
+            <div class="image-box">
+                <img src="{% static 'images/dog8.jpeg' %}" alt="Healthy Cat">
+            </div>
+            <div class="box">
+                <h3>Puppy Care:</h3>
+                <p>Puppies may need more frequent vet visits for vaccinations, deworming, and health checks. </p>
+                <p>Discuss vaccination schedules and deworming protocols with your vet. </p>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-buttons">
+        <a href="{% url 'dog_health_routine' id=request.session.did %}" class="create-schedule-btn">
+            <span>Create Schedule</span>
+        </a>
+        {% if routine %}
+        <a href="{% url 'dog_health_view' id=routine.id %}" class="view-schedule-btn">View Routine</a>
+    {% endif %}
+    </div>
+    
+</section>
+
+{% endblock %}
+

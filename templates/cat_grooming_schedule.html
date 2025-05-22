@@ -1,0 +1,290 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Cat Grooming{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<style>
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Page Styling */
+section {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 60px 0;
+}
+
+/* Main Container */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 35px;
+}
+
+h3 {
+    color: #34495e;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Layout: Flexbox */
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+/* Alternate Row - Image Left, Text Right */
+.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Centered Row */
+.center {
+    justify-content: center;
+}
+
+/* Box Styling */
+.box {
+    flex: 1;
+    padding: 30px;
+    border-radius: 12px;
+    background: white;
+    text-align: center;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Image Styling */
+.image-box {
+    flex: 1;
+    text-align: center;
+}
+
+.image-box img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease-in-out;
+}
+
+.image-box img:hover {
+    transform: scale(1.1);
+}
+
+/* Full-Width Image */
+.row.center .image-box img {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease-in-out;
+}
+
+.row.center .image-box img:hover {
+    transform: scale(1.05);
+}
+
+/* Buttons */
+.create-schedule-btn {
+    display: block;
+    width: 240px;
+    margin: 50px auto 0;
+    padding: 16px 28px;
+    background-color: #2980b9;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.create-schedule-btn:hover {
+    background-color: #1f6690;
+    transform: scale(1.07);
+}
+
+/* Fixed Button Container */
+.fixed-buttons {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between buttons */
+}
+
+/* Fixed Buttons Styling */
+.fixed-buttons a {
+    display: block;
+    width: 240px;
+    padding: 16px 28px;
+    background-color: #2980b9;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.fixed-buttons a:hover {
+    background-color: #1f6690;
+    transform: scale(1.07);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        text-align: center;
+    }
+    .reverse {
+        flex-direction: column;
+    }
+    .image-box img {
+        max-width: 95%;
+    }
+
+    .fixed-buttons {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .fixed-buttons a {
+        width: 180px;
+        padding: 12px 20px;
+        font-size: 18px;
+    }
+}
+
+</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+<section>
+    <div class="container">
+        <h2>Cat Grooming Schedule</h2>
+
+        <!-- First Section - Image on Right -->
+        <div class="row">
+            <div class="box">
+                <h3>Regular Brushing:</h3>
+                <p><strong>Frequency:</strong> Brush your cat 1-2 times a week to help prevent matting and remove loose fur, which can reduce hairballs.</p>
+                <p><strong>Benefits:</strong> Regular brushing helps keep your cat's coat healthy and shiny, and it also allows you to check for any skin issues or parasites. </p>
+            </div>
+            <div class="image-box">
+                <img src="{% static 'images/cat10.jpeg' %}" alt="Kittens Eating">
+            </div>
+        </div>
+
+        <!-- Second Section - Image on Left -->
+        <div class="row reverse">
+            <div class="image-box">
+                <img src="{% static 'images/cat11.jpeg' %}" alt="Factors to Consider">
+            </div>
+            <div class="box">
+                <h3>Bathing:</h3>
+                <p><strong>Frequency:</strong>Most cats don't need baths very often, typically every 4-6 weeks, or more frequently for long-haired cats. </p>
+                <p><strong>When to bathe:</strong> Only bathe your cat if they get into something dirty or smelly that they can't groom out themselves. </p>
+                <p><strong>Use cat-specific shampoo:</strong>Avoid using human shampoo, as it can strip their natural oils. </p>
+            </div>
+        </div>
+
+        <!-- Full-Width Image -->
+        <!-- <div class="row center">
+            <div class="image-box">
+                <img src="{% static 'images/cat5.jpg' %}" alt="Cat Food Schedule">
+            </div>
+        </div> -->
+
+        <!-- Third Section - Image on Right -->
+        <div class="row">
+            <div class="box">
+                <h3>Checking for Parasites and Other Issues:</h3>
+                <p><strong>Regularly check:</strong>Look for fleas, ticks, or other parasites during grooming sessions. </p>
+                <p><strong>Monitor for signs of overgrooming:</strong> Excessive licking or hair loss can indicate underlying problems like allergies, parasites, or stress.  </p>
+                <p><strong>Consult a vet:</strong>  If you notice any concerning signs, consult your veterinarian for diagnosis and treatment.  </p>
+            </div>
+            <div class="image-box">
+                <img src="{% static 'images/cat12.jpeg' %}" alt="Cat Eating">
+            </div>
+        </div>
+
+        <!-- Fourth Section - Image on Left -->
+        <div class="row reverse">
+            <div class="image-box">
+                <img src="{% static 'images/cat13.jpeg' %}" alt="Healthy Cat">
+            </div>
+            <div class="box">
+                <h3>Nail Trimming:</h3>
+                <p><strong>Frequency:</strong>Trim your cat's nails every 2-3 weeks to prevent them from becoming too long and potentially causing discomfort or injury.</p>
+                <p><strong>How to trim:</strong>Use cat nail clippers and be careful not to cut into the quick (the pink part of the nail). </p>
+            </div>
+        </div>
+
+        <div class="row reverse">
+            <div class="image-box">
+                <img src="{% static 'images/cat14.jpeg' %}" alt="Healthy Cat">
+            </div>
+            <div class="box">
+                <h3>Professional Grooming:</h3>
+                <p><strong>Consider professional grooming:</strong>If you have a long-haired cat or if you're struggling to groom them yourself, consider taking them to a professional groomer.</p>
+                <p><strong>Frequency:</strong>You may need to take your cat to a professional groomer 4 times a year or as needed. </p>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-buttons">
+        <a href="{% url 'cat_grooming_routine' id=request.session.cid %}" class="create-schedule-btn">
+            Create Schedule
+        </a>
+    </a>
+    {% if routine %}
+<a href="{% url 'cat_grooming_view' id=routine.id %}" class="view-schedule-btn">View Routine</a>
+{% endif %}
+        </a>
+    </div>
+    
+</section>
+
+{% endblock %}
+
